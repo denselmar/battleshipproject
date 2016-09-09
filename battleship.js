@@ -22,6 +22,7 @@ var letterConversion = {
 }
 
 var letterArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+var hitCount = 0;
 
 // makes the grid columns and rows
 for (i = 0; i < cols; i++) {
@@ -65,10 +66,23 @@ var gameBoard = [
 
 function fireTorpedo() {
 
-userInput = document.getElementById("textInput").value;
-rowLetter = userInput.substring(0,1);
-console.log(rowLetter);
+var userInput = $("#textInput").val();
+var rowLetter = userInput.substring(0,1);
+var column = userInput.substring(1,3);
+var row = letterConversion[rowLetter];
+var battleshipGuess = gameBoard[row][column];
+var myDivString = "#s" + row +(column - 1);
+console.log(row);
+console.log(column);
 
-	// Your game logic will go here!
-
+if (battleshipGuess == 1){
+	console.log(myDivString);
+	$(myDivString).css("background-color", "red");
+	hitCount += 1;
+	console.log(hitCoUnt);
 }
+	else {
+		$(myDivString).css("background-color", "grey");
+	}
+}
+	// Your game logic will go here!
